@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Blog</title>
+  <meta charset="utf-8">
+  <!-- Use the correct tag for linking stylesheet -->
+  <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+  </header>
+  
+  <main>
+    <article>
+      <header>
+        <h2>Stateless & Stateful Composable ใน Jetpack Compose</h2>
+        <time datetime="2023-8-25">27 สิงหาคม 2566</time>
+      </header>
+      <img class="img2" src="images/SS.png" alt="[คำอธิบายรูปภาพ]">
+      <p>
+        <h4>
+          State เป็นหัวใจสำคัญอย่างหนึ่งของการใช้ Declarative UI อย่าง Jetpack Compose ที่จะคอยบอกว่า Composable แต่ละตัวควรแสดงผลแบบใด และนั่นจึงทำให้ State ที่จะใช้ใน Composable มีอยู่ 2 รูปแบบด้วยกัน คือ Stateless และ Stateful
+        </h4>
+         <p>ชื่อเต็ม ๆ ของ Composable ทั้ง 2 แบบคือ Stateless Composable และ Stateful Composable 
+            บทความในชุดเดียวกัน
+            Stateless & Stateful Composable [Now Reading]
+            State Hoisting
+            Slot API
+            Shape
+            โดยทั้งคู่จะมีวิธีสร้างทุกอย่างเหมือนกันทั้งหมด ต่างกันตรงที่การจัดการ State ที่ Composable นั้น ๆ เรียกใช้งาน
+            
+            ยกตัวอย่างเช่น เจ้าของบล็อกต้องการสร้าง Composable ขึ้นมาในลักษณะแบบนี้
+            ItemOption
+            Row
+            Checkbox
+            Text
+          </p>
+      </p>
+      <a href="https://akexorcist.dev/stateless-and-stateful-composable-in-jetpack-compose/" target="_blank">
+        <button type="button">อ่านต่อ</button>
+      </a>
+    </article>
+  </main>
+
+  <main>
+    <article>
+      <header>
+        <h2>Shape</h2>
+        <time datetime="2023-8-27">27 สิงหาคม 2566</time>
+      </header>
+      <img class="img2" src="images/SSS.png" alt="[คำอธิบายรูปภาพ]">
+      <p>
+        <h4>
+          สารบัญบทความแอนดรอยด์
+          สร้าง UI ให้ได้ดั่งใจด้วย Shape ใน Jetpack Compose Shape เป็นหนึ่งในความสามารถบน Jetpack Compose ที่ช่วยให้นักพัฒนาสามารถสร้าง UI ในรูปทรงต่าง ๆ ได้หลากหลายตามความต้องการ ซึ่งจะช่วยให้นักพัฒนาสร้าง UI ที่มีรูปร่างซับซ้อนได้ง่าย (เมื่อเทียบกับ Android Views)
+        </h4>
+
+        <p>Box(
+          modifier = Modifier
+              .size(100.dp)
+              .background(
+                  color = Red400,
+                  shape = CircleShape
+              )
+        ) { /* .. */ } </p>
+        <img src="https://akexorcist.dev/content/images/size/w1000/2023/08/shape_in_jetpack_compose-001.webp" width="500" height="200">
+        <p> ในกรณีที่ไม่ได้กำหนด Shape ใด ๆ จะได้พื้นหลังเป็นรูปทรงสี่เหลี่ยมเสมอ
+          และนอกเหนือจากการกำหนดพื้นหลังแล้ว ก็จะเห็น Shape ได้จากการกำหนดค่าอย่างอื่นใน Modifier ด้วยเช่นกัน
+          
+          ยกตัวอย่างเช่น นักพัฒนาต้องการเพิ่มเงาให้กับโค้ดก่อนหน้านี้ ก็ให้เพิ่มคำสั่ง Shadow เข้าไปแบบนี้</p>
+      </p>
+      <a href="https://akexorcist.dev/shape-in-jetpack-compose/">
+        <button type="button">อ่านต่อ</button>
+      </a>
+
+      <hr>  
+      <a href="main.html">
+        <button type="button">กลับไปหน้าหลัก</button>
+      </a>
+    </article>
+  </main>
+
+  <footer>
+    <p>สงวนลิขสิทธิ์</p>
+  </footer>
+</body>
+</html>

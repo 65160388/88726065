@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="stylesheet" type="text/css" href="css/mystyle.css">
+    <link rel="stylesheet" type="text/css" href="css/mystyle.css">
+    <title>Job Application Form 65160388</title>
+  </head>
+  
+
+    <body>
+        <form action="job-application.php" method="post" class="order-form">
+            <div class="sen">
+                <div class="billing-info">
+                    <h2>Billing information</h2>
+                    <div class="billing-info-content">
+                        <label for="name">Name:</label><br>
+                        <input type="text" id="name" name="name" placeholder="ชื่อ" required>
+                        
+                        <label for="lname">Last name:</label><br>
+                        <input type="text" id="lname" name="lname" placeholder="นามสกุล" required>
+                    </div>
+                </div>
+                <div class="order-details">
+                    <h2>Order details</h2>
+                    <div class="email-wrapper">
+                        <label for="email" class="email-label">Email:</label><br>
+                        <input type="email" id="email" name="email" placeholder="อีเมล" class="width-input email-input" required>
+                        <label for="website" class="email-label">Website:</label><br>
+                        <input type="url" id="website" name="website" placeholder="เว็บไซต์" class="width-input email-input">
+                        <label for="job" class="email-label">ตำแหน่งงาน:</label><br>
+                        <input type="text" id="job" name="job" placeholder="ตำแหน่งงาน" class="width-input email-input" required>
+                        <label for="money" class="email-label">เงินเดือนที่ต้องการ:</label><br>
+                        <input type="number" id="money" name="money" placeholder="เงินเดือนที่ต้องการ" class="width-input email-input" required>
+                        <label for="day" class="email-label">วันที่เริ่มงาน:</label><br>
+                        <input type="date" id="day" name="day" placeholder="วันที่เริ่มงาน" class="width-input1 email-input" required>
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <h2>Payment information</h2>
+                    <div class="payment-info-content">
+                        <label for="phone">Phone number:</label><br>
+                        <input type="tel" id="phone" name="phone" maxlength="10" placeholder="เบอร์โทรศัพท์" required>
+                        <label for="telp">Home phone number:</label><br>
+                        <input type="tel" id="telp" name="telp" placeholder="เบอร์โทรศัพท์บ้าน" required>
+                        <label for="moving">Will you relocate?</label><br>
+                        <input type="radio" id="yes" name="moving" value="yes" required />
+                        <label for="yes">Yes</label>
+                        <input type="radio" id="no" name="moving" value="no" required />
+                        <label for="no">No</label>
+                        <input type="radio" id="notsure" name="moving" value="notsure" required />
+                        <label for="notsure">Not sure</label><br>
+                        <label for="jobstlye" class="email-label job-experience-label">Previous job experience:</label><br>
+                        <input type="text" id="jobstlye" name="jobstlye" placeholder="ประสบการณ์การทำงานที่ผ่านมา" class="width-input job-experience-input" required>
+                    </div>
+                </div>
+            </div>
+            <div class="submit-form">
+                <button type="submit">ส่งใบสมัคร</button>
+            </div>
+            <p>
+                <a href="main.html">
+                <button type="button">กลับไปหน้าหลัก</button>
+                </a>
+            </p>   
+        </form>
+    </body>
+</html>
