@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Blog</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+    <nav>
+      <a href="file:///D:/65160388/Lab01/images/blog.html">หน้าแรก</a>
+      <a href="#">บทความ</a>
+      <a href="#">เกี่ยวกับ</a>
+    </nav>
+  </header>
+  <main>
+    <article>
+      <header>
+        <h2>Shape</h2>
+        <time datetime="2023-8-27">27 สิงหาคม 2566</time>
+      </header>
+      <img src="Shape.png" width="400" height="200">
+      <p>
+        <h4>
+          สารบัญบทความแอนดรอยด์
+          สร้าง UI ให้ได้ดั่งใจด้วย Shape ใน Jetpack Compose Shape เป็นหนึ่งในความสามารถบน Jetpack Compose ที่ช่วยให้นักพัฒนาสามารถสร้าง UI ในรูปทรงต่าง ๆ ได้หลากหลายตามความต้องการ ซึ่งจะช่วยให้นักพัฒนาสร้าง UI ที่มีรูปร่างซับซ้อนได้ง่าย (เมื่อเทียบกับ Android Views)
+        </h4>
+
+        <p>Box(
+            modifier = Modifier
+                .size(100.dp)
+                .background(
+                    color = Red400,
+                    shape = CircleShape
+                )
+        ) { /* .. */ } </p>
+        <img src="https://akexorcist.dev/content/images/size/w1000/2023/08/shape_in_jetpack_compose-001.webp" width="500" height="200">
+        <p> ในกรณีที่ไม่ได้กำหนด Shape ใด ๆ จะได้พื้นหลังเป็นรูปทรงสี่เหลี่ยมเสมอ
+            และนอกเหนือจากการกำหนดพื้นหลังแล้ว ก็จะเห็น Shape ได้จากการกำหนดค่าอย่างอื่นใน Modifier ด้วยเช่นกัน
+            
+            ยกตัวอย่างเช่น นักพัฒนาต้องการเพิ่มเงาให้กับโค้ดก่อนหน้านี้ ก็ให้เพิ่มคำสั่ง Shadow เข้าไปแบบนี้</p>
+        </p>
+        
+
+
+
+      <p>
+        <a href="file:///D:/65160388/Lab01/images/blog.html"><button>กลับไปหน้าหลัก</button></a>
+      </p>
+    </article>
+  </main>
+  <footer>
+    <p>สงวนลิขสิทธิ์</p>
+  </footer>
+</body>
+</html>
