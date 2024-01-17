@@ -10,6 +10,11 @@ function deleteTodo(index) {
   renderTodoList();
 }
 
+function toggleComplete(index) {
+  todos[index].completed = !todos[index].completed;
+
+  renderTodoList();
+}
 
 function addTodo() {
   const todoText = todoInput.value.trim();
