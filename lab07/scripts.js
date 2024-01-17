@@ -4,6 +4,13 @@ const addButton = document.getElementById("add-button");
 let todos = [];
 
 
+function deleteTodo(index) {
+  todos.splice(index, 1);
+
+  renderTodoList();
+}
+
+
 function addTodo() {
   const todoText = todoInput.value.trim();
   if (todoText !== "") {
