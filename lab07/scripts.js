@@ -1,0 +1,57 @@
+const todoList = document.getElementById("todo-list");
+const todoInput = document.getElementById("todo-input");
+const addButton = document.getElementById("add-button");
+let todos = [];
+
+
+function addTodo() {
+  const todoText = todoInput.value.trim();
+  if (todoText !== "") {
+    const todoItem = {
+      text: todoText,
+      completed: false,
+    };
+
+    todos.push(todoItem);
+    renderTodoList();
+    todoInput.value = "";
+  }
+}
+
+
+function renderTodoList() {
+  todoList.innerHTML = "";
+
+  
+  for (let i = 0; i < todos.length; i++) {
+    const listItem = document.createElement("li");
+    listItem.textContent = todos[i].text;
+
+    if (todos[i].completed) {
+      listItem.classList.add("completed");
+    }
+
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "ลบ";
+    deleteButton.addEventListener("click", () => deleteTodo(i));
+
+    const completeButton = document.createElement("button");
+    completeButton.textContent = todos[i].completed ? "ยกเลิก" : "เสร็จ";
+    completeButton.addEventListener("click", () => toggleComplete(i));
+
+    listItem.appendChild(completeButton);
+    listItem.appendChild(deleteButton);
+
+    todoList.appendChild(listItem);
+  }
+}
+
+addButton.addEventListener("click", addTodo);
+
+todoInput.addEventListener("keypress", function (event) {
+  if (event.key === "Enter") {
+    addTodo();
+  }
+});
+
+renderTodoList();
