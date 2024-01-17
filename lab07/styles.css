@@ -1,12 +1,11 @@
-/* ตั้งค่าพื้นฐานสำหรับ body */
 body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 20px;
     background-color: #f8f8f8;
   }
-  
-  /* หัวเรื่อง */
+
+
   h1 {
     color: #333;
     font-size: 24px;
@@ -17,8 +16,8 @@ body {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
-  
-  /* รายการ tasks */
+
+
   ul {
     list-style-type: none;
     padding: 0;
@@ -40,8 +39,7 @@ body {
     background-color: #d4edda;
     text-decoration: line-through;
   }
-  
-  /* ฟอร์มเพิ่มรายการ */
+ 
   input[type="text"] {
     width: 60%;
     padding: 12px;
