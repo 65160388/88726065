@@ -101,4 +101,9 @@ body {
     border-radius: 5px;
     box-sizing: border-box;
   }
+
+  .download-button-container {
+    display: grid;
+    place-items: center;
+  }
   
