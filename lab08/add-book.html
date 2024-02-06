@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book DB - Add/Edit</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Book DB</h1>
+  </header>
+  <div class="main-add-book">
+    <div class="grid-container">
+      <div class="grid-item">
+        <h2>Add Book (เพิ่มหนังสือ)</h2>
+        <form id="bookForm">
+          <label for="book_name">ชื่อหนังสือ:</label>
+          <input type="text" id="book_name" name="book_name" class="input-field" placeholder="ชื่อหนังสือ">
+
+          <label for="book_price">ราคา:</label>
+          <input type="text" id="book_price" name="book_price" class="input-field" placeholder="ราคา">
+
+          <label for="book_author1">ชื่อผู้แต่ง 1:</label>
+          <input type="text" id="book_author1" name="book_author1" class="input-field" placeholder="ชื่อผู้แต่ง 1">
+
+          <label for="book_author2">ชื่อผู้แต่ง 2:</label>
+          <input type="text" id="book_author2" name="book_author2" class="input-field" placeholder="ชื่อผู้แต่ง 2">
+
+          <label for="book_author3">ชื่อผู้แต่ง 3:</label>
+          <input type="text" id="book_author3" name="book_author3" class="input-field" placeholder="ชื่อผู้แต่ง 3">
+
+          <button type="button" onclick="GoToInDexBookHtml()" class="search-add-back-button">กลับ</button>
+          <button type="button" onclick="addeditBook()" class="search-add-back-button">เพิ่ม</button>
+          <button type="button" onclick="downloadBooksAsJson()" class="search-add-back-button">ดาวน์โหลด books.json</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    var books = JSON.parse(localStorage.getItem("books")) || [];
+
+    function findMaxBookId() {
+      var max = 0;
+      for (var i = 0; i < books.length; i++) {
+        if (books[i].id > max) {
+          max = books[i].id;
+        }
+      }
+      return max;
+    }
+
+    function addeditBook() {
+      addOrEditBook();
+      window.location.href = "search.html";
+    }
+
+    function addOrEditBook() {
+      var name = document.getElementById("book_name").value;
+      var price = document.getElementById("book_price").value;
+      var author1 = document.getElementById("book_author1").value;
+      var author2 = document.getElementById("book_author2").value;
+      var author3 = document.getElementById("book_author3").value;
+
+      var id = urlParams.get("id");
+
+      if (id) {
+        for (var i = 0; i < books.length; i++) {
+          if (books[i].id == id) {
+            books[i].name = name;
+            books[i].price = price;
+            books[i].author1 = author1;
+            books[i].author2 = author2;
+            books[i].author3 = author3;
+          }
+        }
+      } else {
+        id = findMaxBookId() + 1;
+        var book = {
+          id: id,
+          name: name,
+          price: price,
+          author1: author1,
+          author2: author2,
+          author3: author3,
+        };
+        books.push(book);
+      }
+
+      localStorage.setItem("books", JSON.stringify(books));
+
+      document.getElementById("book_name").value = "";
+      document.getElementById("book_price").value = "";
+      document.getElementById("book_author1").value = "";
+      document.getElementById("book_author2").value = "";
+      document.getElementById("book_author3").value = "";
+      document.getElementById("book_name").focus();
+    }
+
+    function downloadBooksAsJson() {
+      var jsonString = JSON.stringify(books, null, 2);
+      var blob = new Blob([jsonString], { type: 'application/json' });
+
+      var a = document.createElement('a');
+      a.href = window.URL.createObjectURL(blob);
+      a.download = 'books.json';
+
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id");
+
+    if (id) {
+      var bookToEdit = books.find(function (book) {
+        return book.id == id;
+      });
+      if (bookToEdit) {
+        document.getElementById("book_name").value = bookToEdit.name;
+        document.getElementById("book_price").value = bookToEdit.price;
+        document.getElementById("book_author1").value = bookToEdit.author1;
+        document.getElementById("book_author2").value = bookToEdit.author2;
+        document.getElementById("book_author3").value = bookToEdit.author3;
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+[
+    {
+      "id": 1,
+      "name": "No.1",
+      "price": "500",
+      "author1": "ภูริพัฒน์",
+      "author2": "อรัญ",
+      "author3": "ธงธง"
+    },
+    {
+      "id": 2,
+      "name": "No.2",
+      "price": "1000",
+      "author1": "Kokoe",
+      "author2": "Hino",
+      "author3": "Honda"
+    },
+    {
+      "id": 3,
+      "name": "No.3",
+      "price": "1500",
+      "author1": "Okida",
+      "author2": "Noman",
+      "author3": "Fuuki"
+    }
+]

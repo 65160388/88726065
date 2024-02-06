@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book DB</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body onload="loadBooks()">
+  <header>
+    <h1>Book DB</h1>
+  </header>
+  <main>
+    <section class="search-bar">
+      <input type="text" id="search" placeholder="ค้นหาหนังสือ" class="search-input">
+      <button onclick="searchBooks()" class="search-add-back-button">ค้นหา</button>
+      <button onclick="addBook()" class="search-add-back-button">เพิ่ม</button>
+    </section>
+    <section class="result">
+      <table class="result-table">
+        <tbody id="results"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+    var books;
+
+    function loadBooks() {
+      books = JSON.parse(localStorage.getItem("books")) || [];
+      searchBooks();
+    }
+
+    function addBook() {
+      window.location.href = "add-book.html";
+    }
+
+    function searchBooks() {
+      var search = document.getElementById("search").value.toLowerCase();
+      var result = document.getElementById("results");
+      var html = "<tr><th>ชื่อหนังสือ</th><th>ราคา</th><th>ผู้แต่ง</th><th>แก้ไข/ลบ</th></tr>";
+
+      for (var i = 0; i < books.length; i++) {
+        var str = books[i].name + "|" + books[i].price + "|" + books[i].author1 + " , " + books[i].author2 + " , " + books[i].author3;
+
+        if (str.toLowerCase().includes(search)) {
+          html += "<tr><td>" + books[i].name + "</td><td>" + books[i].price + "</td><td>" +
+                  books[i].author1 + " , " + books[i].author2 + " , " + books[i].author3 +
+                  "</td><td><img src='https://t.ly/mtMN' onclick='editBook(" + books[i].id + ")'> " +
+                  "<img src='https://t.ly/523J' onclick='deleteBook(" + books[i].id + ")'></td></tr>";
+        }
+      }
+
+      result.innerHTML = html;
+    }
+
+    function deleteBook(id) {
+      for (var i = 0; i < books.length; i++) {
+        if (books[i].id == id) {
+          books.splice(i, 1);
+        }
+      }
+
+      localStorage.setItem("books", JSON.stringify(books));
+      searchBooks();
+    }
+
+    function editBook(id) {
+      window.location.href = "add-book.html?id=" + id;
+    }
+  </script>
+</body>
+</html>

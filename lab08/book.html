@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book DB</title>
+  <link rel="stylesheet" href="CSS/styles.css">
+</head>
+<body>
+  <header>
+    <h1>Book DB</h1>
+  </header>
+  <main>
+    <section class="search-bar">
+      <input type="text" id="search" placeholder="ค้นหาหนังสือ" class="search-input">
+      <button onclick="searchBook()" class="search-add-back-button">ค้นหา</button>
+      <button onclick="GoToAddBookHtml()" class="search-add-back-button">เพิ่ม</button>
+    </section>
+    <section class="result">
+      <table class="result-table">
+        <thead>
+          <tr>
+            <th>ชื่อหนังสือ</th>
+            <th>ราคา</th>
+            <th>ผู้แต่ง</th>
+            <th>แก้ไข/ลบ</th>
+          </tr>
+        </thead>
+        <tbody id="results"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script>
+      // Books structure ที่จะเก็บใน localStorage
+      // var books = [
+      // {
+      // id: 1,
+      // name: "Book A",
+      // price: 100
+      // },
+      // {
+      // id: 2,
+      // name: "Book B",
+      // price: 150
+      // }
+      // ];
+      var books;
+      function searchBook() {
+        var search = document.getElementById("search").value;
+        var result = document.getElementById("result");
+        var html = "";
+        for (var i = 0; i < books.length; i++) {
+          // ต่อ string id และ name และ price ด้วย |
+          str = books[i].id + "|" + books[i].name + "|" + books[i].price;
+          // ถ้า str มีค าที่ค้นหา ให้แสดงผล
+          if (str.toLowerCase().includes(search.toLowerCase())) {
+            html +=
+              "<img src='https://t.ly/mtMN' onclick='editBook(" +
+              books[i].id +
+              ")'>" +
+              books[i].id +
+              " : " +
+              books[i].name +
+              " : " +
+              books[i].price +
+              "<img src='https://t.ly/523J' onclick='deleteBook(" +
+              books[i].id +
+              ")'>" +
+              "<br>";
+          }
+        }
+        result.innerHTML = "<hr>ผลการค้นหา<br>" + html;
+      }
+      // find max book_id
+      function findMaxBookId() {
+        var max = 0;
+        for (var i = 0; i < books.length; i++) {
+          if (books[i].id > max) {
+            max = books[i].id;
+          }
+        }
+        return max;
+      }
+      // add new book
+      function addBook() {
+        var id = document.getElementById("id").value;
+        var name = document.getElementById("book_name").value;
+        var price = document.getElementById("book_price").value;
+        // ถ้า id ว่าง แสดงว่าเป็นการเพิ่มใหม่
+        if (id == "") {
+          // หา id ที่มากที่สุด แล้วบวก 1
+          id = findMaxBookId() + 1;
+          // สร้าง object book
+          var book = {
+            id: id,
+            name: name,
+            price: price,
+          };
+          // เพิ่ม object book ต่อท้ายใน array books
+          books.push(book);
+        } else {
+          // ถ้า id ไม่ว่าง แสดงว่าเป็นการแก้ไข
+          // ค้นหา id ที่ตรงกับ id ใน hidden input
+          for (var i = 0; i < books.length; i++) {
+            // ถ้า id ตรงกัน ให้แก้ไข name และ price
+            if (books[i].id == id) {
+              books[i].name = name;
+              books[i].price = price;
+            }
+          }
+        }
+        // save to localStorage
+        // แปลง array books เป็น string แล้วเก็บใน localStorage
+        localStorage.setItem("books", JSON.stringify(books));
+        // clear input
+        document.getElementById("id").value = "";
+        document.getElementById("book_name").value = "";
+        document.getElementById("book_price").value = "";
+        document.getElementById("book_name").focus();
+        // แสดงผล
+        searchBook();
+      }
+
+      // delete book ตาม id
+      function deleteBook(id) {
+        for (var i = 0; i < books.length; i++) {
+          // ถ้า id ตรงกัน ให้ลบออกจาก array
+          if (books[i].id == id) {
+            // อะเรย์ที่ต าแหน่ง i ลบออก 1 ตัว
+            books.splice(i, 1);
+          }
+        }
+        // save to localStorage
+        localStorage.setItem("books", JSON.stringify(books));
+        // แสดงผล
+        searchBook();
+      }
+      // edit book
+      function editBook(id) {
+        for (var i = 0; i < books.length; i++) {
+          // ถ้า id ตรงกัน ให้น าค่าจาก books[i] ไปก าหนดให้ input แต่ละตัว
+          if (books[i].id == id) {
+            document.getElementById("id").value = books[i].id;
+            document.getElementById("book_name").value = books[i].name;
+            document.getElementById("book_price").value = books[i].price;
+          }
+        }
+      }
+      // อ่านจาก localStorage
+      // แปลง string ใน localStorage กลับเป็น array แล้วเก็บในตัวแปร books
+      var books = JSON.parse(localStorage.getItem("books"));
+      // ถ้า books เป็น null หมายความว่าไม่มีข้อมูลใน localStorage ให้ก าหนดให้เป็น array ว่าง
+      if (books == null) {
+        books = [];
+      }
+      // แสดงผล
+      searchBook();
+    </script>
+</body>
+</html>
+
