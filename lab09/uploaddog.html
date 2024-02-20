@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="CSS/style.css">
+  
+</head>
+
+<body>
+  <div class="container">
+    <header>
+      <h1>Upload a Dog</h1>
+    </header>
+
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="fileInput">
+        <button type="button" onclick="chooseFile()">Choose a Dog</button>
+      </label>
+
+      <input type="file" id="fileInput" accept="image/*" style="display: none;" onchange="previewImage(event)" />
+
+      <img id="preview" src="#" alt="Preview" style="display: none; width: 100%; border-radius: 8px; box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);" />
+
+      <div id="uploadResults">
+        <button type="button" onclick="uploadImage()">Upload</button>
+      </div>
+
+      <a href="index.html"><button type="button">Gallery</button></a>
+    </form>
+
+    <script>
+      function previewImage(event) {
+        const input = event.target;
+        const preview = document.getElementById('preview');
+
+        const file = input.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function () {
+          preview.src = reader.result;
+          preview.style.display = 'block';
+        }
+
+        if (file) {
+          reader.readAsDataURL(file);
+        } else {
+          preview.src = '';
+          preview.style.display = 'none';
+        }
+      }
+
+      const API_URL = "https://api.thedogapi.com/v1/";
+      const API_KEY = "live_BFAInBUuDoXOMMMGJpvFZblGgva9pUeNa3geLdaVcfsA79URtlDNUTNZFw8YMic0";
+
+      function uploadImage() {
+        const fileInput = document.getElementById("fileInput");
+        const file = fileInput.files[0];
+        const formData = new FormData();
+        formData.append("file", file);
+
+        fetch(`${API_URL}images/upload`, {
+          method: "POST",
+          headers: {
+            "x-api-key": API_KEY,
+          },
+          body: formData,
+        })
+          .then((response) => {
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            document.getElementById("uploadResults").innerHTML =
+              `<br>Image uploaded successfully`;
+            setTimeout(() => {
+              window.location.href = "index.html";
+            }, 1000); // Redirect to index.html after 1 second
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+
+      function chooseFile() {
+        document.getElementById('fileInput').click();
+      }
+    </script>
+  </body>
+
+  </html>

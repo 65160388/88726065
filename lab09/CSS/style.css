@@ -1,0 +1,56 @@
+/* Global Styles */
+header {
+  background-color: #163020;
+  color: white;
+  text-align: center;
+  padding: 20px;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #D9EDBF;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+}
+
+button {
+  background-color: #0151ad;
+  color: #fff;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px; /* Add some space above the button */
+  margin-bottom: 10px;
+}
+
+/* Styles for the dog container */
+.dog-container {
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.dog-container div { /* Remove unnecessary position: relative */
+  margin: 10px;
+}
+
+.dog-container img {
+  width: calc(33.33% - 20px); /* 33.33% for each image with a margin of 10px on each side */
+  border-radius: 8px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.dog-container .delete-button {
+  background-color: #ff6666; /* Red background color */
+  color: #fff; /* White text color */
+  border: 1px solid #ff3333; /* Red border */
+  padding: 5px 10px; /* Padding around the button text */
+  cursor: pointer; /* Change cursor on hover */
+  border-radius: 5px; /* Add border-radius for rounded corners */
+}
+
