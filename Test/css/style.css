@@ -1,0 +1,31 @@
+.search-bar {
+    font-size: 15px;
+    margin-left: 12px;
+    display: inline;
+    text-align: left;
+    outline: none;
+}
+
+.search-bar:focus {
+    border: solid 2px rgb(19, 7, 235);
+  }
+
+.thumbnail {
+    width: 300px;
+}
+
+.video-title {
+    line-height: 1.0;
+}
+
+b {
+    font-size: 17px;
+}
+
+.video-author {
+    line-height: 4.5;
+}
+
+.video-stats {
+    line-height: 1.5;
+}

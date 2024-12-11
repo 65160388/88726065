@@ -1,0 +1,56 @@
+/* ปรับแต่งสไตล์ของเว็บไซต์ */
+
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+main {
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+.list-container {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#list-items {
+    list-style: none;
+    padding: 0;
+}
+
+#list-items li {
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#list-items li:hover {
+    background-color: #f0f0f0;
+}
+
+.detail-container {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#detail-image {
+    max-width: 100%;
+    margin-bottom: 10px;
+}
+
+#detail-name {
+    font-weight: bold;
+}

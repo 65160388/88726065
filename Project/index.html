@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>สถานที่ท่องเที่ยว</title>
+    <link rel="stylesheet" href="css/s1.css">
+</head>
+<body>
+    <header>
+        <h1>สถานที่ท่องเที่ยว</h1>
+        <input type="text" id="search-input" placeholder="ค้นหาสถานที่ท่องเที่ยว...">
+    </header>
+    <main>
+        <section class="list-container">
+            <h2>รายชื่อสถานที่ท่องเที่ยว</h2>
+            <ul id="list-items">
+            </ul>
+        </section>
+        <section class="detail-container">
+            <h2>รายละเอียดสถานที่ท่องเที่ยว</h2>
+            <div id="detail-image"></div>
+            <p id="detail-name"></p>
+            <p id="detail-description"></p>
+        </section>
+    </main>
+    <script src="js/script.js">// โค้ด JavaScript สำหรับแสดงรายการสถานที่ท่องเที่ยว
+        const places = [
+            {
+                name: "วัดพระศรีรัตนศาสดาราม (วัดพระแก้ว)",
+                description: "วัดพระศรีรัตนศาสดาราม หรือ วัดพระแก้ว ตั้งอยู่ในพระบรมมหาราชวัง เขตพระนคร กรุงเทพมหานคร เป็นวัดสำคัญในศาสนาพุทธ อันดับหนึ่งของประเทศไทย",
+                images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Wat_Phra_Kaew_01.jpg/1200px-Wat_Phra_Kaew_01.jpg"]
+            },
+            {
+                name: "ตลาดน้ำอัมพวา",
+                description: "ตลาดน้ำอัมพวา ตั้งอยู่ริมแม่น้ำแม่กลอง ตำบลอัมพวา อำเภออัมพวา จังหวัดสมุทรสงคราม เป็นตลาดน้ำที่มีชื่อเสียงโด่งดังของประเทศไทย",
+                images: ["https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Amphawa_Floating_Market_2.jpg/1200px-Amphawa_Floating_Market_2.jpg"]
+            },
+            // เพิ่มข้อมูลสถานที่ท่องเที่ยวอื่นๆ
+        ];
+
+        // แสดงรายการสถานที่ท่องเที่ยว
+        const listItems = document.getElementById('list-items');
+        for (const place of places) {
+            const item = document.createElement('li');
+            item.textContent = place.name;
+            item.addEventListener('click', () => {
+                showDetail(place);
+            });
+            listItems.appendChild(item);
+        }
+
+        // แสดงรายละเอียดสถานที่ท่องเที่ยว
+        function showDetail(place) {
+            const detailImage = document.getElementById('detail-image');
+            detailImage.innerHTML = `<img src="${place.images[0]}" alt="${place.name}">`;
+            const detailName = document.getElementById('detail-name');
+            detailName.textContent = place.name;
+            const detailDescription = document.getElementById('detail-description');
+            detailDescription.textContent = place.description;
+        }
+
+        // ค้นหาสถานที่ตามชื่อ
+        const searchInput = document.getElementById('search-input');
+        searchInput.addEventListener('keyup', () => {
+            const searchText = searchInput.value.toLowerCase();
+            const filteredPlaces = places.filter(place => place.name.toLowerCase().includes(searchText));
+            const listItems = document.getElementById('list-items');
+            listItems.innerHTML = '';
+            filteredPlaces.forEach(place => {
+                const item = document.createElement('li');
+                item.textContent = place.name;
+                item.addEventListener('click', () => {
+                    showDetail(place);
+                });
+                listItems.appendChild(item);
+            });
+        });
+    </script>
+</body>
+</html>
